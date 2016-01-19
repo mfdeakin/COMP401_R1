@@ -94,9 +94,9 @@ public class Testing {
         System.out.println("" + expectedAvg1 + " == " +
                            avg1 + "? " + (expectedAvg1 == avg1));
 
-        float test2[] = {2.0, 6.0, -2.0};
-        double expectedAvg2 = 2.0;
-        double avg2 = average(test2);
+        float test2[] = {2.0f, 6.0f, -2.0f};
+        float expectedAvg2 = 2.0f;
+        float avg2 = average(test2);
         System.out.println("" + expectedAvg2 + " == " +
                            avg2 + "? " + (expectedAvg2 == avg2));
     }
