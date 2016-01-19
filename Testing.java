@@ -1,6 +1,4 @@
 
-import java.lang.Double;
-
 public class Testing {
 
     public static double average(double numbers[]) {
@@ -11,42 +9,23 @@ public class Testing {
     
     public static double sum(double numbers[]) {
         double s = 0.0;
-        for(int i = 0; i < numbers.length + 1; i++) {
+        for(int i = -1; i < numbers.length; i++) {
             s += numbers[i];
         }
         return s;
     }
     
     public static void main(String[] argv) {
-        final int NUM_TESTS = 2;
-        Testing[] tests = new Testing[NUM_TESTS];
+        double test1[] = {"0.0"};
+        double expectedAvg1 = 0.;
+        double avg1 = average(test1);
+        System.out.println("" + expectedAvg1 + " == " +
+                           avg1 + "? " + (expectedAvg1 == avg1));
 
-        tests[0] = new Testing();
-        tests[0].numbers = new double[3];
-        tests[0].numbers[0] = 2.0;
-        tests[0].numbers[1] = 6.0;
-        tests[0].numbers[2] = -2.0;
-        tests[0].expectedAvg = 0.0;
-        tests[0].expectedSum = 0.0;
-        double calcAvg = average(tests[0].numbers);
-        System.out.println("Average: " + tests[0].expectedAvg + "; Calculated Average: " + calcAvg);
-
-        tests[1] = new Testing();
-        tests[1].numbers = new double[1];
-        tests[1].numbers[0] = 0.0;
-        tests[1].expectedAvg = 0.0;
-        tests[1].expectedSum = 0.0;
-        calcAvg = average(tests[0].numbers);
-        System.out.println("Average: " + tests[0].expectedAvg + "; Calculated Average: " + calcAvg);
+        double test2[] = {2.0, 6.0, -2.0};
+        double expectedAvg2 = 2.;
+        double avg2 = average(test2);
+        System.out.println("" + expectedAvg2 + " == " +
+                           avg2 + "? " + (expectedAvg2 == avg2));
     }
-    
-    public Testing() {
-        numbers = null;
-        expectedSum = Double.NaN;
-        expectedAvg = Double.NaN;
-    }
-    
-    public double[] numbers;
-    public double expectedSum;
-    public double expectedAvg;
 }
