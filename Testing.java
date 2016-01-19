@@ -24,6 +24,8 @@ public class Testing {
      * numbers is unmodified
      */
     public static double sum(double numbers[]) {
+        boolean notNull = (numbers != null);
+        assert notNull;
         double s = 0.0;
         for(int i = -1; i < numbers.length; i++) {
             s += numbers[i];
@@ -71,28 +73,28 @@ public class Testing {
     }
     
     public static void main(String[] argv) {
-        System.out.println(exp(2.0, 1023));
-        System.out.println(exp(2.0, 1024));
-        System.out.println(exp(3.0, 2));
+        /* Give a convincing number of data points that show exp works */
         System.out.println(exp(3.0, 3));
         System.out.println(exp(3.0, 4));
         System.out.println(exp(3.0, 5));
         System.out.println(exp(3.0, 6));
+        /* Show the assert working */
         System.out.println(exp(4.0, -2));
-        
+
+        /* Fix the bugs! */
         double test0[];
         double expectedAvg0 = 0.0;
         double avg0 = average(test0);
         System.out.println("" + expectedAvg0 + " == " +
                            avg0 + "? " + (expectedAvg0 == avg0));
         
-        double test1[] = {0.0};
+        double test1[] = {"0.0"};
         double expectedAvg1 = 0.0;
         double avg1 = average(test1);
         System.out.println("" + expectedAvg1 + " == " +
                            avg1 + "? " + (expectedAvg1 == avg1));
 
-        double test2[] = {2.0, 6.0, -2.0};
+        float test2[] = {2.0, 6.0, -2.0};
         double expectedAvg2 = 2.0;
         double avg2 = average(test2);
         System.out.println("" + expectedAvg2 + " == " +
