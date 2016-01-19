@@ -49,7 +49,8 @@ public class Testing {
          */
         if(base == 0.0)
             return 0.0;
-        /* Now use it to decide what to do next
+
+        /* Now use the exponent to decide what to do next
          * If the exponent is zero, x^0 = 1, so return 0
          * If the exponent is divisible by two,
          * we can compute the result as (base^2)^(exponent / 2)
