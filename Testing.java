@@ -1,3 +1,12 @@
+/* To enable asserts, add the following option to the VM command: -ea
+ * In eclipse, this can be done with the following steps:
+ * Open the menu "Project -> Properties"
+ * Open Run/Debug Settings
+ * Select the project configuration
+ * Edit
+ * Open Arguments
+ * Add -ea to the VM Arguments field
+ */
 
 public class Testing {
 
