@@ -1,13 +1,3 @@
-/* To enable asserts, add the following option to the VM command: -ea
- * In eclipse, this can be done with the following steps:
- * Open the menu "Project -> Properties"
- * Open Run/Debug Settings
- * Select the project configuration
- * Edit
- * Open Arguments
- * Add -ea to the VM Arguments field
- */
-
 public class Testing {
 
     /* average
@@ -17,9 +7,7 @@ public class Testing {
      * Postconditions: average returns the average value of the numbers
      * numbers is unmodified
      */
-    public static double average(double numbers[]) {
-        boolean notNull = (numbers != null);
-        assert notNull;
+    public static double average(double[] numbers) {
         double s = sum(numbers);
         double avg = s / (numbers.length - 1);
         return avg;
@@ -32,9 +20,7 @@ public class Testing {
      * Postconditions: sum returns the total sum of the numbers
      * numbers is unmodified
      */
-    public static double sum(double numbers[]) {
-        boolean notNull = (numbers != null);
-        assert notNull;
+    public static double sum(double[] numbers) {
         double s = 0.0;
         for(int i = -1; i < numbers.length; i++) {
             s += numbers[i];
@@ -49,17 +35,14 @@ public class Testing {
      * Postconditions: exp returns the value of base^exponent.
      */
     public static double exp(double base, int exponent) {
-        /* Verify this is a valid exponent */
-        boolean validExp = (exponent >= 0);
-        assert validExp;
-
         /* Since exponent is valid,
          * we must guarantee we return a valid value for all values of base
          * Simply applying the following algorithm will not work for base == 0,
          * so check for it here.
          */
-        if(base == 0.0)
+        if(base == 0.0) {
             return 0.0;
+	}
 
         /* Now use the exponent to decide what to do next
          * If the exponent is zero, x^0 = 1, so return 0
@@ -67,12 +50,14 @@ public class Testing {
          * we can compute the result as (base^2)^(exponent / 2)
          * Otherwise, we can compute the result as (base^2)^((exponent - 1) / 2) * base
          */
-        if(exponent == 0)
+        if(exponent == 0) {
             return 1.0;
+	}
         double mult = 1.0;
-        if(exponent % 2 == 1)
+        if(exponent % 2 == 1) {
             //The exponent is not divisible by two, so multiply by base instead of one.
             mult = base;
+	}
         double sqr = base * base;
         /* Dividing an integer x by 2 will automatically perform x/2 or (x-1)/2,
          * depending on whether x is divisible by 2 */
@@ -82,28 +67,23 @@ public class Testing {
     }
     
     public static void main(String[] argv) {
-        /* Give a convincing number of data points that show exp works */
+        /* Try running exp in the debugger and watch the call stack */
         System.out.println(exp(3.0, 3));
-        System.out.println(exp(3.0, 4));
-        System.out.println(exp(3.0, 5));
-        System.out.println(exp(3.0, 6));
-        /* Show the assert working */
-        System.out.println(exp(4.0, -2));
 
         /* Fix the bugs! */
-        double test0[];
+        double[] test0;
         double expectedAvg0 = 0.0;
         double avg0 = average(test0);
         System.out.println("" + expectedAvg0 + " == " +
                            avg0 + "? " + (expectedAvg0 == avg0));
         
-        double test1[] = {"0.0"};
+        double[] test1 = {"0.0"};
         double expectedAvg1 = 0.0;
         double avg1 = average(test1);
         System.out.println("" + expectedAvg1 + " == " +
                            avg1 + "? " + (expectedAvg1 == avg1));
 
-        float test2[] = {2.0f, 6.0f, -2.0f};
+        float[] test2 = {2.0f, 6.0f, -2.0f};
         float expectedAvg2 = 2.0f;
         float avg2 = average(test2);
         System.out.println("" + expectedAvg2 + " == " +
